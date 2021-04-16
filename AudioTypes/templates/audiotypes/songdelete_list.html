@@ -1,0 +1,27 @@
+{% extends 'audiotypes/index.html' %}
+{% block body_block %}
+
+<div class="container">
+    <h2 align="center">Song Delete List</h2>
+    <hr>
+    {% if messages %} {% for message in messages %}
+    <!-- <div class="alert alert-info" role="alert">
+    <a class="alert-link">{{ message }}</a>
+    </div> -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Hey</strong> {{ message }}
+      <a class="close" href="#" data-dismiss="alert">×</a>
+    </div>
+    {% endfor %} {% endif %}
+    {% for datas in form %}
+    
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Song Name : {{datas.Song_Name}}</h5>
+        <a href="{% url 'song_delete' datas.id %}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+    {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'audiotypes/index.html' %}
+{% block body_block %}
+
+<div class="container">
+    <h2 align="center">Podcast Detail</h2>
+    <hr>
+    {% if messages %} {% for message in messages %}
+    <!-- <div class="alert alert-info" role="alert">
+    <a class="alert-link">{{ message }}</a>
+    </div> -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Hey</strong> {{ message }}
+      <a class="close" href="#" data-dismiss="alert">×</a>
+    </div>
+    {% endfor %} {% endif %}
+    <div class="card text-center">
+        <div class="card-header">
+          Duration in Seconds : {{form.Podcast_Duration}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Podcast Name : {{form.Podcast_Name}}</h5>
+          <p class="card-text">Podcast Host : {{form.Podcast_Host}}</p>
+          <p class="card-text">Podcast Participants : {{form.Podcast_Participants}}</p>
+          <p class="card-text">Podcast UploadDate : {{form.Podcast_Uploaddate}}</p>
+          <p class="card-text">Podcast UploadTime : {{form.Podcast_Uploadtime}}</p>
+          <a href="{% url 'podcastlist' %}" class="btn btn-primary">Go Back</a>
+        </div>
+        <div class="card-footer text-muted">
+          Book ID : {{form.id}}
+        </div>
+      </div>
+  
+    {% endblock %}

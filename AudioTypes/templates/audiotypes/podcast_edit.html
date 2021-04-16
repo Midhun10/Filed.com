@@ -1,0 +1,77 @@
+{% extends 'audiotypes/index.html' %}
+{% block body_block %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+<div class="container">
+  <h2 align="center">Podcast Edit</h2>
+  <hr>
+  {% if messages %} {% for message in messages %}
+  <!-- <div class="alert alert-info" role="alert">
+  <a class="alert-link">{{ message }}</a>
+  </div> -->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Hey</strong> {{ message }}
+    <a class="close" href="#" data-dismiss="alert">×</a>
+  </div>
+  {% endfor %} {% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Podcast Name</label>
+      {{form.Podcast_Name}}
+      </div>
+      <div class="mb-3">
+          <label for="name" class="form-label">Podcast Host</label>
+          {{form.Podcast_Host}}
+          </div>
+      <div class="mb-3">
+          <label for="name" class="form-label">Podcast Duration</label>
+          {{form.Podcast_Duration}}
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Podcast Upload Time</label>
+            {{form.Podcast_Uploaddate}}
+            {{form.Podcast_Uploaddate.errors}}
+            </div>
+          <div class="mb-3">
+              <label for="name" class="form-label">Podcast Upload Time</label>
+              {{form.Podcast_Uploadtime}}
+              {{form.Podcast_Uploadtime.errors}}
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Podcast Participants</label>
+                {{form.Podcast_Participants}}
+                </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Podcast Participants Number</label>
+                {{form.Podcast_Participants_Count}}
+                </div>
+                <div id="dynamicCheck">
+                  <input type="button" value="+" class="btn btn-small btn-primary button" onclick="createNewElement()"/>
+               </div>
+               <br>
+               <div id="newElementId"><h6>Provide your participants here</h6></div>
+                <input type="submit" name="Edit" value="Edit" class="btn btn-warning">
+    </form>
+  </div>
+  <script type="text/JavaScript">
+    function createNewElement() {
+       var inpObj = document.getElementById("id_Podcast_Participants_Count").value;
+        // First create a DIV element.
+        var i;
+        for (i=1;i<=inpObj;i++)
+        {
+          if (i > 10) {
+            break;
+          }
+               var txtNewInputBox = document.createElement('div');
+        // Then add the content (a new input box) of the element
+   
+               txtNewInputBox.innerHTML = "<input type='text' name='participants' id='newInputBox'>";
+        // Finally put it where it is supposed to appear.
+               document.getElementById("newElementId").appendChild(txtNewInputBox);
+        
+        }
+    }
+    </script>
+    {% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'audiotypes/index.html' %}
+{% block body_block %}
+
+<div class="container">
+    <h2 align="center">AudioBook Edit</h2>
+    <hr>
+    {% if messages %} {% for message in messages %}
+    <!-- <div class="alert alert-info" role="alert">
+    <a class="alert-link">{{ message }}</a>
+    </div> -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Hey</strong> {{ message }}
+      <a class="close" href="#" data-dismiss="alert">×</a>
+    </div>
+    {% endfor %} {% endif %}
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="name" class="form-label">Book Title</label>
+        {{form.Book_Title}}
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Book Author</label>
+            {{form.Book_Author}}
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Book Narrator</label>
+                {{form.Book_Narrator}}
+                </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Book Duration</label>
+            {{form.Book_Duration}}
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Book Upload Time</label>
+              {{form.Book_Uploaddate}}
+              {{form.Book_Uploaddate.errors}}
+              </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Book Upload Time</label>
+                {{form.Book_Uploadtime}}
+                {{form.Book_Uploadtime.errors}}
+                </div>
+    
+                <input type="submit" name="Edit" value="Edit" class="btn btn-warning">
+    </form>
+  </div>
+  
+    {% endblock %}

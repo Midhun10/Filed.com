@@ -1,0 +1,41 @@
+{% extends 'audiotypes/index.html' %}
+{% block body_block %}
+
+<div class="container">
+    <h2 align="center">Song Edit</h2>
+    <hr>
+    {% if messages %} {% for message in messages %}
+    <!-- <div class="alert alert-info" role="alert">
+    <a class="alert-link">{{ message }}</a>
+    </div> -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Hey</strong> {{ message }}
+      <a class="close" href="#" data-dismiss="alert">×</a>
+    </div>
+    {% endfor %} {% endif %}
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="name" class="form-label">Song Name</label>
+        {{form.Song_Name}}
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Song Duration</label>
+            {{form.Song_Duration}}
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Song Upload Time</label>
+              {{form.Song_Uploaddate}}
+              {{form.Song_Uploaddate.errors}}
+              </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Song Upload Time</label>
+                {{form.Song_Uploadtime}}
+                {{form.Song_Uploadtime.errors}}
+                </div>
+              
+      <input type="submit" name="Edit" value="Edit" class="btn btn-warning">
+    </form>
+  </div>
+  
+    {% endblock %}
